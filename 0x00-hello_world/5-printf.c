@@ -4,7 +4,8 @@
 
 int main(void)
 {
-	printf("with proper grammar, but the outcome is a piece of art,");
+	/* Print a text with the function printf */
+	printf("with proper grammar, but the outcome is a piece of art,\n");
 
 	return (0);
 }
