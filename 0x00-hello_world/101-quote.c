@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 /**
  * main - Print a quote of Dora korpar without use function of stdio
  *
