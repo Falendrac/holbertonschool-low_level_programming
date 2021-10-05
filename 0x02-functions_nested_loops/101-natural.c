@@ -7,19 +7,16 @@
  */
 int main(void)
 {
-	int multi3, multi5;
+	int i, multi;
 
-	for (multi3 = 3; multi3 < 1024; multi3 += 3)
+	multi = 0;
+
+	for (i = 0; i < 1024; i++)
 	{
+		if (i % 3 == 0 || i % 5 == 0)
+			multi += i;
 	}
 
-	printf("%d\n", multi3);
-
-	for (multi5 = 5; multi5 < 1024; multi5 += 5)
-	{
-	}
-
-	printf("%d\n", multi5);
-
+	printf("%d\n", multi);
 	return (0);
 }
