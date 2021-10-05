@@ -1,4 +1,4 @@
 # Ignore main and putchar
 
 _putchar*
-*main*
+*main.c
