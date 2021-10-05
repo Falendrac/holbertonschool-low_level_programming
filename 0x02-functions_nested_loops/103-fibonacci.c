@@ -15,14 +15,15 @@ int main(void)
 	n = 1;
 	nmin1 = 1;
 	nmin2 = 0;
-	count = n;
+	count = 0;
 
-	for (i = 1; i < 33; i++)
+	for (i = 1; i <= 33; i++)
 	{
 		nmin2 = nmin1;
 		nmin1 = n;
 		n = nmin1 + nmin2;
-		count += n;
+		if (n % 2 == 0)
+			count += n;
 	}
 
 	printf("%lu\n", count);
