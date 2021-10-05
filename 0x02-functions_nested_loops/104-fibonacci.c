@@ -17,13 +17,13 @@ int main(void)
 	nmin2 = 0;
 
 	printf("%lu, ", n);
-	for (i = 1; i < 99; i++)
+	for (i = 1; i < 98; i++)
 	{
 		nmin2 = nmin1;
 		nmin1 = n;
 		n = nmin1 + nmin2;
 
-		if (i != 98)
+		if (i != 97)
 			printf("%lu, ", n);
 		else
 			printf("%lu\n", n);
