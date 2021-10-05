@@ -15,7 +15,7 @@ int main(void)
 	nmin1 = 2;
 	nmin2 = 1;
 
-	for (i = 0; i < 99; i++)
+	for (i = 0; i < 95; i++)
 	{
 		if (i == 0)
 			printf("%lu", nmin2);
