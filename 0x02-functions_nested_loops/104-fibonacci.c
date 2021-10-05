@@ -12,21 +12,19 @@ int main(void)
 	int i; /* nmin1 = n-1, nmin2 = n-2 */
 	unsigned long int n, nmin1, nmin2;
 
-	n = 1;
-	nmin1 = 1;
-	nmin2 = 0;
+	nmin1 = 2;
+	nmin2 = 1;
 
-	printf("%lu, ", n);
-	for (i = 1; i < 98; i++)
+	for (i = 0; i < 99; i++)
 	{
+		if (i == 0)
+			printf("%lu", nmin2);
+		else
+			printf(", %lu", nmin2);
+
+		n = nmin1 + nmin2;
 		nmin2 = nmin1;
 		nmin1 = n;
-		n = nmin1 + nmin2;
-
-		if (i != 97)
-			printf("%lu, ", n);
-		else
-			printf("%lu\n", n);
 	}
 
 	return (0);
