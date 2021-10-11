@@ -9,10 +9,8 @@ void print_rev(char *s)
 {
 	char *start = s;
 
-	while (*s != '\0')
+	while (*(s + 1) != '\0')
 		s++;
-
-	s--;
 
 	while (s != start)
 		_putchar(*s--);
