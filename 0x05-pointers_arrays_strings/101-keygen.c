@@ -19,7 +19,8 @@ int main(void)
 	{
 		gen = rand() % 126;
 		count -= gen;
-		putchar(gen);
+		if (gen != '\0')
+			putchar(gen);
 	}
 
 	putchar(count);
