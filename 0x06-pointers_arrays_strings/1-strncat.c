@@ -19,7 +19,10 @@ char *_strncat(char *dest, char *src, int n)
 		if (*(src + loop) != '\0')
 			*(dest + length_dest + loop) = *(src + loop);
 		else
+		{
+			*(dest + length_dest + loop) = '\0';
 			loop = n;
+		}
 
 	return (dest);
 }
