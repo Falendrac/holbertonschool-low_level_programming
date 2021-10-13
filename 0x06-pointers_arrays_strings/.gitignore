@@ -1,4 +1,4 @@
-# Ignore all
+# Ignore all (for executable files)
 *
 
 # But not these files
@@ -7,5 +7,6 @@
 !main.h
 !README.md
 
-# And ignore all main.c
+# And ignore all main.c and _putchar.c
 *main.c
+_putchar.c
