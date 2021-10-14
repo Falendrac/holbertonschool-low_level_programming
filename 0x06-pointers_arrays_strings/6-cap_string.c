@@ -13,28 +13,29 @@ char *cap_string(char *str)
 
 	length = _strlen(str);
 
-	for (loop = 0; loop < length; loop++)
-		if (*(str + loop) >= 97 && *(str + loop) <= 122)
-			switch (*(str + loop - 1))
-			{
-				case ' ':
-				case '\t':
-				case '\n':
-				case ',':
-				case ';':
-				case '.':
-				case '!':
-				case '?':
-				case '"':
-				case '(':
-				case ')':
-				case '{':
-				case '}':
-					*(str + loop) -= 32;
-					break;
-				default:
-					break;
-			}
+	if (length != 0)
+		for (loop = 0; loop < length; loop++)
+			if (*(str + loop) >= 97 && *(str + loop) <= 122)
+				switch (*(str + loop - 1))
+				{
+					case ' ':
+					case '\t':
+					case '\n':
+					case ',':
+					case ';':
+					case '.':
+					case '!':
+					case '?':
+					case '"':
+					case '(':
+					case ')':
+					case '{':
+					case '}':
+						*(str + loop) -= 32;
+						break;
+					default:
+						break;
+				}
 
 	return (str);
 }
