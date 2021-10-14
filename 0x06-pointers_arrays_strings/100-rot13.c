@@ -1,0 +1,47 @@
+#include "main.h"
+
+/**
+ * rot13 - Encode a string into rot13
+ *
+ * @str: The string we encode
+ *
+ * Return: str
+ */
+char *rot13(char *str)
+{
+	int length, loop1, loop2;
+	char alpha[52] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" };
+	char rot13[52] = { "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm" };
+
+	length = _strlen(str);
+
+	for (loop1 = 0; loop1 < length; loop1++)
+		for (loop2 = 0; loop2 < 52; loop2++)
+			if (*(str + loop1) == alpha[loop2])
+			{
+				*(str + loop1) = rot13[loop2];
+				break;
+			}
+
+	return (str);
+}
+
+/**
+ * _strlen - Return the length of a string
+ *
+ * @s: The String we want to know the length
+ *
+ * Return: length
+ */
+int _strlen(char *s)
+{
+	int length = 0;
+
+	while (*s != '\0')
+	{
+		s++;
+		length++;
+	}
+
+	return (length);
+}
