@@ -32,6 +32,8 @@ char *cap_string(char *str)
 				case '}':
 					*(str + loop) -= 32;
 					break;
+				default:
+					break;
 			}
 
 	return (str);
