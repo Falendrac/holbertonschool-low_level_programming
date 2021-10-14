@@ -14,7 +14,10 @@ char *cap_string(char *str)
 
 	length = _strlen(str);
 
-	if (length != 0)
+	if (*str >= 97 && *str <= 122)
+		*str -= 32;
+
+	if (*str != '\0')
 		for (loop = 0; loop < length; loop++)
 			if (*(str + loop) >= 97 && *(str + loop) <= 122)
 				for (loopsep = 0; sep[loopsep] != '\0'; loopsep++)
