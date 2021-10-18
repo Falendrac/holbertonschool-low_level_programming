@@ -6,7 +6,7 @@
  * @s: The first string we search the first occurrence
  * @accept: The bytes we search
  *
- * Return: 0
+ * Return: 0 or s
  */
 char *_strpbrk(char *s, char *accept)
 {
@@ -17,6 +17,6 @@ char *_strpbrk(char *s, char *accept)
 			if (*(s + loop1) == *(accept + loop2))
 				return ((s + loop1));
 
-	return (s);
+	return (0);
 }
 
