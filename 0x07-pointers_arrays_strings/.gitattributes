@@ -1,7 +1,7 @@
 # Handle line endings automatically for files detected as text 
 # and leave all files detected as binary untouched.
 * text=false
-* autocrlf= false
+* insert_final_newline=false
 
 # Never modify line endings of our bash scripts
 *.sh -crlf
