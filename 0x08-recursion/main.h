@@ -13,4 +13,5 @@ int search_factor(int n, int factor);
 int is_palindrome(char *s);
 int test_palindrome(char *s, int start, int length);
 int wildcmp(char *s1, char *s2);
+int wildcmp_identical_length(char *s1, char *s2);
 
