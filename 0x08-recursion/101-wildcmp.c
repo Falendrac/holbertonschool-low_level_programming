@@ -10,10 +10,11 @@
  */
 int wildcmp(char *s1, char *s2)
 {
-	int length_s1, length_s2;
+	int length_s1, length_s2, jumpin_s1;
 
 	length_s1 = _strlen_recursion(s1);
 	length_s2 = _strlen_recursion(s2);
+	jumpin_s1 = length_s1 - length_s2;
 
 	if (length_s1 == length_s2 && *s1 == *s2)
 		return (wildcmp_identical_length(s1, s2));
@@ -22,7 +23,7 @@ int wildcmp(char *s1, char *s2)
 		return (1);
 
 	if (*s2 == '*' && length_s1 > (length_s2 - 1) * 2)
-		return (wildcmp((s1 + 1), (s2 + 1)));
+		return (wildcmp((s1 + jumpin_s1), (s2 + 1)));
 	else if (*s2 == '*')
 		return (wildcmp(s1, (s2 + 1)));
 
