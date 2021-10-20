@@ -1,0 +1,12 @@
+# Ignore all (for executable files)
+*
+
+# But not these files
+!.gitignore
+!*.c
+!main.h
+!README.md
+
+# And ignore all main.c and _putchar.c
+*main.c
+_putchar.c
