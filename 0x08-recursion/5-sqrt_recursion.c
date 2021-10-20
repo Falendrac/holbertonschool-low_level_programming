@@ -17,8 +17,8 @@ int _sqrt_recursion(int n)
 	}
 	else
 	{
-		i = search_squrt(n, i);
-		if (_pow_recursion(i, 2) == n)
+		i = search_sqrt(n, i);
+		if (i * i == n)
 			return (i);
 		else
 			return (-1);
@@ -36,9 +36,7 @@ int _sqrt_recursion(int n)
 int search_sqrt(int n, int i)
 {
 	if (i * i < n)
-		search_squrt(n, i + 1);
-	else
-		return (i);
+		return (search_sqrt(n, i + 1));
 
-	return (-1);
+	return (i);
 }
