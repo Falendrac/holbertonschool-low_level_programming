@@ -10,4 +10,6 @@ int is_prime_number(int n);
 
 int search_sqrt(int n, int i);
 int search_factor(int n, int factor);
+int is_palindrome(char *s);
+int test_palindrome(char *s, int start, int length);
 
