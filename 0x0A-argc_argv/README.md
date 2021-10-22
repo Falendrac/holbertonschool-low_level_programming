@@ -38,3 +38,9 @@ Using Ubuntu 20.04.
     Adds positive numbers, print the result. If no number is passed to the
     program, print <0>. If one of the number contains symbols that are no digits
     and print <Error>.
+
+* 100-change.c
+
+    Print the minimum number of coins to make change for an amount of money.
+    Usage: ./change cents
+    Cents is the amount of cents you need to give back
