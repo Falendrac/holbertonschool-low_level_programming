@@ -21,17 +21,18 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	while (result != cents)
-	{
-		if ((result + coins[index]) <= cents)
+	if (atoi(argv[1]) > 0)
+		while (result != cents)
 		{
-			result += coins[index];
-			numberOfCoins++;
-			index = 0;
+			if ((result + coins[index]) <= cents)
+			{
+				result += coins[index];
+				numberOfCoins++;
+				index = 0;
+			}
+			else
+				index++;
 		}
-		else
-			index++;
-	}
 
 	printf("%d\n", numberOfCoins);
 
