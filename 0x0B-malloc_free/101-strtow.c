@@ -14,7 +14,7 @@ char **strtow(char *str)
 	char **aled;
 	int numberWords, loop1, index_word, index_aled = 0;
 
-	if (str == NULL)
+	if (str == NULL && *str == '\0')
 		return (NULL);
 
 	numberWords = count_word(str);
@@ -62,7 +62,12 @@ char **strtow(char *str)
  */
 int count_word(char *s)
 {
-	int length = 0;
+	int length;
+
+	if (*s != ' ')
+		length = 1;
+	else
+		length = 0;
 
 	while (*s != '\0')
 	{
