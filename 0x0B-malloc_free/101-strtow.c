@@ -12,7 +12,7 @@
 char **strtow(char *str)
 {
 	char **aled;
-	int numberWords, loop1, index_word, index_aled = 0;
+	int numberWords, i, iWord, iAled = 0;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
@@ -27,27 +27,27 @@ char **strtow(char *str)
 	if (aled == NULL)
 		return (NULL);
 
-	for (loop1 = 0; *(str + loop1) != '\0'; loop1++)
+	for (i = 0; *(str + i) != '\0'; i++)
 	{
-		if (*(str + loop1) != ' ')
+		if (*(str + i) != ' ')
 		{
-			*(aled + index_aled) = malloc(sizeof(char) * strwlen((str + loop1)) + 1);
+			*(aled + iAled) = malloc(sizeof(char) * strwlen((str + i)) + 1);
 
-			if (*(aled + index_aled) == NULL)
+			if (*(aled + iAled) == NULL)
 			{
-				for (index_aled = 0; index_aled < numberWords; index_aled++)
-					free(*(aled + index_aled));
+				for (iAled = 0; iAled < numberWords; iAled++)
+					free(*(aled + iAled));
 
 				free(aled);
 				return (NULL);
 			}
 
-			for (index_word = 0; *(str + loop1 + index_word) != ' '; index_word++)
-				*(*(aled + index_aled) + index_word) = *(str + loop1 + index_word);
+			for (iWord = 0; *(str + i + iWord) != ' ' && *(str + i + iWord); iWord++)
+				*(*(aled + iAled) + iWord) = *(str + i + iWord);
 
-			if (index_word > 0)
-				index_aled++;
-			loop1 += strwlen((str + loop1)) - 1;
+			if (iWord > 0)
+				iAled++;
+			i += strwlen((str + i)) - 1;
 		}
 	}
 	return (aled);
@@ -91,12 +91,8 @@ int strwlen(char *s)
 {
 	int length = 0;
 
-	if (s != NULL)
-		while (*s != ' ' && *s != '\0')
-		{
-			s++;
-			length++;
-		}
+	while (*(s + length) != ' ' && *(s + length))
+		length++;
 
 	return (length);
 }
