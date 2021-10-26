@@ -22,7 +22,7 @@ char **strtow(char *str)
 	if (numberWords == 0)
 		return (NULL);
 
-	aled = (char **)malloc(sizeof(char *) * numberWords + 2);
+	aled = (char **)malloc(sizeof(char *) * numberWords + 1);
 
 	if (aled == NULL)
 		return (NULL);
@@ -31,7 +31,7 @@ char **strtow(char *str)
 	{
 		if (*(str + i) != ' ')
 		{
-			*(aled + iAled) = (char *)malloc(sizeof(char) * strwlen((str + i)) + 1);
+			*(aled + iAled) = (char *)malloc(sizeof(char) * strwlen((str + i)) + 2);
 
 			if (*(aled + iAled) == NULL)
 			{
