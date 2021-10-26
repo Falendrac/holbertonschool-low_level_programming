@@ -31,7 +31,7 @@ char **strtow(char *str)
 	{
 		if (*(str + i) != ' ')
 		{
-			*(aled + iAled) = (char *)malloc(sizeof(char) * strwlen((str + i)) + 1);
+			*(aled + iAled) = (char *)malloc(sizeof(char) * strwlen((str + i)) + 1 + 7);
 
 			if (*(aled + iAled) == NULL)
 			{
