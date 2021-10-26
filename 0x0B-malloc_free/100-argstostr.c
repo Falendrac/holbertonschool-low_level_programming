@@ -14,20 +14,14 @@ char *argstostr(int ac, char **av)
 {
 	char *str;
 	int loop, loop_ac, loop_str, sumOfLength = 1;
-	int *av_length;
 
-	if (ac <= 1 || av == NULL)
+	if (ac < 1 || av == NULL)
 	{
 		return (NULL);
 	}
 
-	av_length = malloc(sizeof(int) * ac);
-
 	for (loop = 0; loop < ac; loop++)
-	{
-		av_length[loop] = _strlen(*(av + loop));
 		sumOfLength += _strlen(*(av + loop));
-	}
 
 	str = malloc(sizeof(char) * sumOfLength + ac);
 
@@ -39,14 +33,12 @@ char *argstostr(int ac, char **av)
 
 	for (loop = 0, loop_str = 0; loop < ac; loop++)
 	{
-		for (loop_ac = 0; loop_ac < av_length[loop]; loop_ac++, loop_str++)
+		for (loop_ac = 0; *(*(av + loop) + loop_ac) != '\0'; loop_ac++, loop_str++)
 			*(str + loop_str) = *(*(av + loop) + loop_ac);
 
 		*(str + loop_str) = '\n';
 		loop_str++;
 	}
-
-	free(av_length);
 
 	return (str);
 }
