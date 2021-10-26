@@ -33,3 +33,11 @@ Using Ubuntu 20.04.
 * 4-free_grid.c
 
     Function that frees a 2 dimensional grid previously created by alloc_grid function.
+
+* 100-argstostr.c
+
+    Function that concatenates all the arguments of a program
+
+* 100-strtow.c
+
+    Function that splits a string into words
