@@ -91,11 +91,12 @@ int strwlen(char *s)
 {
 	int length = 0;
 
-	while (*s != ' ')
-	{
-		s++;
-		length++;
-	}
+	if (s != NULL)
+		while (*s != ' ' && *s != '\0')
+		{
+			s++;
+			length++;
+		}
 
 	return (length);
 }
