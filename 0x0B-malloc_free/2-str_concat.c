@@ -14,10 +14,21 @@ char *str_concat(char *s1, char *s2)
 	char *str;
 	int s1Length, s2Length, loop;
 
-	s1Length = _strlen(s1);
-	s2Length = _strlen(s2);
+	if (s1 != NULL)
+		s1Length = _strlen(s1);
+	else
+		s1Length = 0;
+
+	if (s2 != NULL)
+		s2Length = _strlen(s2);
+	else
+		s2Length = 0;
 
 	str = malloc(s1Length + s2Length);
+
+	if (str == NULL)
+		return (NULL);
+
 
 	for (loop = 0; loop < (s1Length + s2Length); loop++)
 	{
