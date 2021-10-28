@@ -1,45 +1,45 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
+
+int _strlen(char *s);
 
 /**
- * string_nconcat - Function that concatenates two strings
- * It's returned a pointer shall point to a newly allocates space in memory,
- * wich contains s1, followed by the first n bytes of s2 and null terminated
+ * string_nconcat - Concatenate 2 string into a new one
  *
- * @s1: The first string we concatenate
- * @s2: The second string we concatenate
- * @n: The number of bytes of the second int we want
+ * @s1: Str one
+ * @s2: Str two
+ * @n: Size that we want to concatenate
  *
- * Return: str
+ * Return: NULL if probleme, pointer to new str else (succes)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *str;
-	unsigned int lengthS1 = 0, lengthS2 = 0, loop;
+	char *sFinal;
+	unsigned int length1, length2, i;
 
-	if (s1 != NULL)
-		while (s1[lengthS1] != '\0')
-			lengthS1++;
-
-	if (s2 != NULL)
-		while (s2[lengthS2] != '\0')
-			lengthS2++;
-
-	if (n < lengthS2)
-		lengthS2 = n;
-
-	str = malloc(sizeof(char) * (lengthS1 + lengthS2) + 1);
-
-	if (str == NULL)
+	if (s1 == NULL)
+		length1 = 0;
+	else
+	{
+		for (length1 = 0; *(s1 + length1); length1++)
+			;
+	}
+	if (s2 == NULL)
+		length2 = 0;
+	else
+	{
+		for (length2 = 0; *(s2 + length2); length2++)
+			;
+	}
+	if (n < length2)
+		length2 = n;
+	sFinal = malloc(sizeof(char) * (length1 + length2 + 6));
+	if (sFinal == NULL)
 		return (NULL);
-
-	for (loop = 0; loop < lengthS1; loop++)
-		str[loop] = s1[loop];
-
-	for (loop = 0; loop < lengthS2; loop++)
-		str[lengthS1 + loop] = s2[loop];
-
-	str[lengthS1 + lengthS2] = '\0';
-
-	return (str);
+	for (i = 0; i < length1; i++)
+		sFinal[i] = s1[i];
+	for (i = 0; i < length2; i++)
+		sFinal[length1 + i] = s2[i];
+	*(sFinal + length1 + length2) = '\0';
+	return (sFinal);
 }
