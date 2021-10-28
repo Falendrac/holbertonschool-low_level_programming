@@ -36,7 +36,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (str == NULL)
 		return (NULL);
 
-	for (loop = 0; loop < lengthS1 + n && loop < lengthS1 + lengthS2; loop++)
+	for (loop = 0; loop < lengthS1 + n && *(s2 + loop - lengthS1) != '\0'; loop++)
 		if (loop < lengthS1)
 			*(str + loop) = *(s1 + loop);
 		else if (*(s2 + loop - lengthS1) != '\0')
