@@ -28,15 +28,15 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	else
 		lengthS2 = 0;
 
-	if (n >= lengthS2)
-		str = malloc(sizeof(char) * (lengthS1 + lengthS2) + 1);
-	else
-		str = malloc(sizeof(char) * (lengthS1 + n) + 1);
+	if (n < lengthS2)
+		lengthS2 = n;
+
+	str = malloc(sizeof(char) * (lengthS1 + lengthS2) + 1);
 
 	if (str == NULL)
 		return (NULL);
 
-	for (loop = 0; loop < lengthS1 + n && *(s2 + loop - lengthS1) != '\0'; loop++)
+	for (loop = 0; loop < lengthS1 + lengthS2 && *(s2 + loop - lengthS1) != '\0'; loop++)
 		if (loop < lengthS1)
 			*(str + loop) = *(s1 + loop);
 		else if (*(s2 + loop - lengthS1) != '\0')
