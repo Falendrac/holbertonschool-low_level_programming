@@ -36,13 +36,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (str == NULL)
 		return (NULL);
 
-	for (loop = 0; loop < lengthS1 + lengthS2 && *(s2 + loop - lengthS1) != '\0'; loop++)
-		if (loop < lengthS1)
-			*(str + loop) = *(s1 + loop);
-		else if (*(s2 + loop - lengthS1) != '\0')
-			*(str + loop) = *(s2 + loop - lengthS1);
+	for (loop = 0; loop < lengthS1; loop++)
+		str[loop] = s1[loop];
 
-	*(str + loop) = '\0';
+	for (loop = 0; loop < lengthS2; loop++)
+		str[lengthS1 + loop] = s2[lengthS2];
+
+	*(str + lengthS1 + lengthS2) = '\0';
 
 	return (str);
 }
