@@ -40,7 +40,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		str[loop] = s1[loop];
 
 	for (loop = 0; loop < lengthS2; loop++)
-		str[lengthS1 + loop] = s2[lengthS2];
+		str[lengthS1 + loop] = s2[loop];
 
 	*(str + lengthS1 + lengthS2) = '\0';
 
