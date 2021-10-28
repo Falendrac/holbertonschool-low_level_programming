@@ -20,14 +20,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s1 != NULL)
 		while (s1[lengthS1] != '\0')
 			lengthS1++;
-	else
-		lengthS1 = 0;
 
 	if (s2 != NULL)
 		while (s2[lengthS2] != '\0')
 			lengthS2++;
-	else
-		lengthS2 = 0;
 
 	if (n < lengthS2)
 		lengthS2 = n;
@@ -46,24 +42,4 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	str[lengthS1 + lengthS2] = '\0';
 
 	return (str);
-}
-
-/**
- * _strlen - Return the length of a string
- *
- * @s: The String we want to know the length
- *
- * Return: length
- */
-int _strlen(char *s)
-{
-	int length = 0;
-
-	while (*s != '\0')
-	{
-		s++;
-		length++;
-	}
-
-	return (length);
 }
