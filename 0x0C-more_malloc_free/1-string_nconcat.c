@@ -16,15 +16,17 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *str;
-	unsigned int lengthS1, lengthS2, loop;
+	unsigned int lengthS1 = 0, lengthS2 = 0, loop;
 
 	if (s1 != NULL)
-		lengthS1 = _strlen(s1);
+		while (s1[lengthS1] != '\0')
+			lengthS1++;
 	else
 		lengthS1 = 0;
 
 	if (s2 != NULL)
-		lengthS2 = _strlen(s2);
+		while (s2[lengthS2] != '\0')
+			lengthS2++;
 	else
 		lengthS2 = 0;
 
