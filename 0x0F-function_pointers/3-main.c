@@ -15,7 +15,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int (*operator)(int, int), a, b;
+	int (*operator)(int, int);
+	int a, b;
 
 	if (argc != 4)
 	{
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (100);
 	}
+
 	printf("%d\n", operator(a, b));
 
 	return (0);
