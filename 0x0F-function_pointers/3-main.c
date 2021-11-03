@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	if (argc != 4)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 
 	operator = get_op_func(argv[2]);
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	if (operator == NULL)
 	{
 		printf("Error\n");
-		return (99);
+		exit(99);
 	}
 
 	a = atoi(argv[1]);
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	if ((*argv[2] == '/' || *argv[2] == '%') && b == 0)
 	{
 		printf("Error\n");
-		return (100);
+		exit(100);
 	}
 
 	printf("%d\n", operator(a, b));
