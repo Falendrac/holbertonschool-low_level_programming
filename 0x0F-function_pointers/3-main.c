@@ -15,7 +15,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int a, b;
+	int (*operator)(int, int), a, b;
 
 	if (argc != 4)
 	{
@@ -23,7 +23,9 @@ int main(int argc, char *argv[])
 		return (98);
 	}
 
-	if (strlen(argv[2]) > 1)
+	operator = get_op_func(argv[2]);
+
+	if (operator == NULL)
 	{
 		printf("Error\n");
 		return (99);
@@ -35,9 +37,9 @@ int main(int argc, char *argv[])
 	if ((*argv[2] == '/' || *argv[2] == '%') && b == 0)
 	{
 		printf("Error\n");
-		return(100);
+		return (100);
 	}
-	printf("%d\n", (*get_op_func(argv[2]))(a, b));
+	printf("%d\n", operator(a, b));
 
 	return (0);
 }
