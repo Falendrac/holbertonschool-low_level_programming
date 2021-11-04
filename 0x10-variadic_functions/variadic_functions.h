@@ -11,11 +11,17 @@ void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
-typedef struct op
+/**
+ * struct searchtype - Struct searchtype
+ *
+ * @typeOf: The type we search
+ * @f: The function associated
+ */
+typedef struct searchtype
 {
 	char *typeOf;
 	void (*f)(va_list);
-} op_t;
+} searchT;
 
 void print_char(va_list listFormat);
 void print_integer(va_list listFormat);
