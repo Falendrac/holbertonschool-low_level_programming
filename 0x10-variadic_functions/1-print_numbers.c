@@ -21,8 +21,9 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		else if (loop < n - 1 && separator == NULL)
 			printf("%d", va_arg(list_var, int));
 		else
-			printf("%d\n", va_arg(list_var, int));
+			printf("%d", va_arg(list_var, int));
 	}
+	printf("\n");
 
 	va_end(list_var);
 }
