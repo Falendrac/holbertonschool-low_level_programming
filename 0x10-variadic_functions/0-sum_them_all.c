@@ -13,6 +13,9 @@ int sum_them_all(const unsigned int n, ...)
 	unsigned int loop;
 	va_list list_var;
 
+	if (n == 0)
+		return (0);
+
 	va_start(list_var, n);
 
 	for (loop = 0; loop < n; loop++)
