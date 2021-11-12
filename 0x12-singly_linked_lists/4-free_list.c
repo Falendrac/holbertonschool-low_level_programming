@@ -7,19 +7,15 @@
  */
 void free_list(list_t *head)
 {
-	list_t *tmp_list, *second_tmp_list;
+	list_t *tmp_list;
 
-	if (head != NULL)
-		tmp_list = head;
 
-	while (tmp_list->next != NULL)
+	while (head != NULL)
 	{
-		second_tmp_list = tmp_list;
-		free(second_tmp_list->str);
-		free(second_tmp_list);
-		tmp_list = tmp_list->next;
+		tmp_list = head;
+		head = head->next;
+		free(tmp_list->str);
+		free(tmp_list);
 	}
 
-	free(tmp_list->str);
-	free(tmp_list);
 }
