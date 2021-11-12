@@ -33,3 +33,7 @@ Ubuntu 20.04.
 4. 4-free_list.c
 
     Function that frees a list_t list.
+
+100. 100-first.c
+
+    With function turtle(void) it's that executed before the main function.
