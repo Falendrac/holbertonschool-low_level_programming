@@ -5,7 +5,7 @@
  * of a listint_t list
  *
  * @head: The listint_t we add a new node
- * @str: Argument pass to be add in the new node
+ * @n: Argument pass to be add in the new node
  *
  * Return: The adress of the new element, or NULL if it failed
  */
