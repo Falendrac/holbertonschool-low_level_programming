@@ -10,20 +10,20 @@
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int idx)
 {
-	listint_t *tmp_list, *tmp_list_next;
-	unsigned int loop = 1;
+	listint_t *tmp_list, *tmp_list_previous;
+	unsigned int loop = 0;
 
-	if (head == NULL || *head == NULL)
-		return (1);
+	if (*head == NULL)
+		return (-1);
 
 	if (idx != 0)
 	{
 
 		tmp_list = *head;
-		while (tmp_list != NULL && loop < idx)
+		while (tmp_list->next != NULL && loop < idx)
 		{
+			tmp_list_previous = tmp_list;
 			tmp_list = tmp_list->next;
-			tmp_list_next = tmp_list->next;
 			loop++;
 		}
 
@@ -32,14 +32,14 @@ int delete_nodeint_at_index(listint_t **head, unsigned int idx)
 			return (-1);
 		}
 
-		tmp_list->next = tmp_list_next->next;
-		free(tmp_list_next);
+		tmp_list_previous->next = tmp_list->next;
+		free(tmp_list);
 	}
 	else
 	{
-		tmp_list = (*head)->next;
-		free(*head);
-		*head = tmp_list;
+		tmp_list = (*head);
+		*head = (*head)->next;
+		free(tmp_list);
 	}
 
 	return (1);
