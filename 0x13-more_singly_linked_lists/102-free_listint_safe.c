@@ -30,6 +30,12 @@ size_t free_listint_safe(listint_t **h)
 	return (element);
 }
 
+/**
+ * listint_safemode - Delete the infinite loop at
+ * the end of linked list
+ *
+ * @h: The linked list we delete the infinite loop
+ */
 void listint_safemode(listint_t *h)
 {
 	size_t element = 0;
