@@ -37,5 +37,6 @@ size_t free_listint_safe(listint_t **h);
 listint_t *find_listint_loop(listint_t *head);
 
 int linked_test(const listint_t *head, const listint_t *current, size_t idx);
+void listint_safemode(listint_t *h);
 
 #endif
