@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 /**
- * insert_nodeint_at_index - Add a new node at the end of a listint_t list
+ * insert_nodeint_at_index - Add a new node at the index of a listint_t list
  *
- * @head: The listint_t we add a new node at the end
+ * @head: The listint_t we add a new node at the index
  * @idx: The index where we want to add a new node
  * @n: Argument pass to be add in the new node
  *
