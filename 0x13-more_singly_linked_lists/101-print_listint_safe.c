@@ -14,7 +14,7 @@ size_t print_listint_safe(const listint_t *head)
 	size_t element = 0;
 	const listint_t *tmp_list;
 
-	if (h != NULL)
+	if (head != NULL)
 	{
 		tmp_list = head;
 		while (tmp_list != NULL)
@@ -27,7 +27,7 @@ size_t print_listint_safe(const listint_t *head)
 			{
 				printf("[%p] %d\n", (void *)tmp_list, tmp_list->n);
 				printf("-> [%p] %d\n", (void *)tmp_list->next, tmp_list->next->n);
-				exit(98);
+				tmp_list = NULL;
 			}
 		}
 	}
