@@ -14,23 +14,41 @@ size_t print_listint_safe(const listint_t *head)
 	size_t element = 0;
 	const listint_t *tmp_list;
 
-	if (head != NULL)
+	tmp_list = head;
+	while (head != NULL && linked_test(tmp_list, head, element))
 	{
-		tmp_list = head;
-		while (tmp_list != NULL)
-		{
-			element++;
-			printf("[%p] %d\n", (void *)tmp_list, tmp_list->n);
-			tmp_list = tmp_list->next;
-
-			if (tmp_list != NULL && tmp_list < tmp_list->next)
-			{
-				printf("[%p] %d\n", (void *)tmp_list, tmp_list->n);
-				printf("-> [%p] %d\n", (void *)tmp_list->next, tmp_list->next->n);
-				tmp_list = NULL;
-			}
-		}
+		element++;
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
 
+	if (head != NULL)
+		printf("-> [%p] %d\n", (void *)head, head->n);
+
 	return (element);
+}
+
+/**
+ * linked_test - Test if we are not in infinite loop
+ *
+ * @head: The first element of linked loop
+ * @current: The current element of linked loop
+ * @idx: The index where we go
+ *
+ * Return: 0 if we are in infinite loop, otherwise 1
+ */
+int linked_test(const listint_t *head, const listint_t *current, size_t idx)
+{
+	size_t count = 0;
+
+	while (head != current)
+	{
+		head = head->next;
+		count++;
+	}
+
+	if (count == idx)
+		return (1);
+
+	return (0);
 }
