@@ -14,17 +14,20 @@ size_t print_listint_safe(const listint_t *h)
 	size_t element = 0;
 	const listint_t *tmp_list;
 
-	tmp_list = h;
-	while (tmp_list != NULL)
+	if (h != NULL)
 	{
-		element++;
-		printf("[%p] %d\n", (void *)tmp_list, tmp_list->n);
-		tmp_list = tmp_list->next;
-
-		if (tmp_list != NULL && tmp_list < tmp_list->next)
+		tmp_list = h;
+		while (tmp_list != NULL)
 		{
-			printf("-> [%p] %d\n", (void *)tmp_list->next, tmp_list->next->n);
-			exit(98);
+			element++;
+			printf("[%p] %d\n", (void *)tmp_list, tmp_list->n);
+			tmp_list = tmp_list->next;
+
+			if (tmp_list != NULL && tmp_list < tmp_list->next)
+			{
+				printf("-> [%p] %d\n", (void *)tmp_list->next, tmp_list->next->n);
+				exit(98);
+			}
 		}
 	}
 
