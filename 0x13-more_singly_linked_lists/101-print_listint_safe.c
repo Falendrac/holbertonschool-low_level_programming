@@ -5,18 +5,18 @@
  * print_listint_safe - Print all the elements of a listint_t list
  * with safe exit
  *
- * @h: The singly linked list we print all the elements
+ * @head: The singly linked list we print all the elements
  *
  * Return: element
  */
-size_t print_listint_safe(const listint_t *h)
+size_t print_listint_safe(const listint_t *head)
 {
 	size_t element = 0;
 	const listint_t *tmp_list;
 
 	if (h != NULL)
 	{
-		tmp_list = h;
+		tmp_list = head;
 		while (tmp_list != NULL)
 		{
 			element++;
