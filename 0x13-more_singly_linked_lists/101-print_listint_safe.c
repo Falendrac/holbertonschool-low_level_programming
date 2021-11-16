@@ -26,7 +26,7 @@ size_t print_listint_safe(const listint_t *h)
 			if (tmp_list != NULL && tmp_list < tmp_list->next)
 			{
 				printf("-> [%p] %d\n", (void *)tmp_list->next, tmp_list->next->n);
-				exit(98);
+				tmp_list = NULL;
 			}
 		}
 	}
