@@ -27,7 +27,7 @@ size_t print_listint_safe(const listint_t *h)
 			{
 				printf("[%p] %d\n", (void *)tmp_list, tmp_list->n);
 				printf("-> [%p] %d\n", (void *)tmp_list->next, tmp_list->next->n);
-				tmp_list = NULL;
+				exit(98);
 			}
 		}
 	}
