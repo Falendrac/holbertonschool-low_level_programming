@@ -6,7 +6,7 @@
  * @head: The listint_t we delete a node at the index
  * @idx: The index where we want to delete a node
  *
- * Return: The adress of the element, or NULL if it failed
+ * Return: 1 if is a sucess, -1 if it failed
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int idx)
 {
@@ -14,7 +14,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int idx)
 	unsigned int loop = 1;
 
 	if (head == NULL || *head == NULL)
-		return (-1);
+		return (1);
 
 	if (idx != 0)
 	{
