@@ -8,25 +8,20 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int n_manip = n, search_div = 1;
+	unsigned int i;
+	int length = 0;
+	unsigned long int n_divided = n;
 
-	while ((search_div * 2) <= n_manip)
-		search_div *= 2;
-
-	if (n_manip != 0)
+	while (n_divided > 1)
 	{
-		_putchar('1');
-		n_manip -= search_div;
-		search_div /= 2;
+		length++;
+		n_divided = n_divided >> 1;
 	}
 
-	while (search_div > n_manip)
-	{
-		_putchar('0');
-		search_div /= 2;
-	}
-
-	if (n_manip != 0)
-		print_binary(n_manip);
+	for (i = 1 << length; i > 0; i = i >> 1)
+		if (i & n)
+			_putchar('1');
+		else
+			_putchar('0');
 }
 
