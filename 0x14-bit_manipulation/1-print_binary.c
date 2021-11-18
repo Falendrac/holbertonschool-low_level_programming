@@ -8,20 +8,27 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned int i;
-	int length = 0;
-	unsigned long int n_divided = n;
+	if (n == 0)
+		_putchar('0');
+	else
+		print_binary_recursive(n);
+}
 
-	while (n_divided > 1)
+/**
+ * print_binary_recursive - Function that prints the binary
+ * representation of a number recursively
+ *
+ * @n: The number we print the binary representation
+ */
+void print_binary_recursive(unsigned long int n)
+{
+	if (n != 0)
 	{
-		length++;
-		n_divided = n_divided >> 1;
-	}
+		print_binary_recursive(n >> 1);
 
-	for (i = 1 << length; i > 0; i = i >> 1)
-		if (i & n)
+		if (n & 1)
 			_putchar('1');
 		else
 			_putchar('0');
+	}
 }
-
