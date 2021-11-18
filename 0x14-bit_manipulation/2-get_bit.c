@@ -18,16 +18,16 @@ int get_bit(unsigned long int n, unsigned int index)
 	if (index > sizeof(unsigned long int) * 8)
 		return (-1);
 
-	while (loop < index && n_divided != 0)
+	while (loop < index)
 	{
 		n_divided /= 2;
 		loop++;
 	}
 
-	if (n_divided == 0)
-		bit = -1;
+	if (n_divided & 1)
+		bit = 1;
 	else
-		bit = n_divided % 2;
+		bit = 0;
 
 	return (bit);
 }
