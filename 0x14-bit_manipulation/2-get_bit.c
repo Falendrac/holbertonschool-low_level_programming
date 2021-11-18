@@ -15,10 +15,6 @@ int get_bit(unsigned long int n, unsigned int index)
 	unsigned int loop = 0;
 	unsigned long int n_divided = n;
 
-
-	if (index > 10)
-		return (-1);
-
 	while (loop < index && n_divided != 0)
 	{
 		n_divided /= 2;
