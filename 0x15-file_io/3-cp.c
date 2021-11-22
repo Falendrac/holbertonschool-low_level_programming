@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 	if (testCreate == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 
 	return (0);
