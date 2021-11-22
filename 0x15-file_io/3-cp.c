@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		exit_procedure(98, argv, 0);
 
 	fdTo = open(argv[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
-	if(fdTo == -1)
+	if (fdTo == -1)
 		exit_procedure(99, argv, 0);
 
 	while ((testRead = read(fdFrom, buf, 1024)) != 0)
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 			testWrite = write(fdTo, buf, testRead);
 
 			if (testWrite == -1)
-				exit_procedure(99, argv,fdTo);
+				exit_procedure(99, argv, fdTo);
 		}
 	}
 
@@ -54,6 +54,7 @@ int main(int argc, char *argv[])
  * is print and exit with the exit code
  *
  * @exitCode: The Number of the exit code
+ * @argv: The names of files
  * @fd: The file of the faillure
  */
 void exit_procedure(int exitCode, char *argv[], int fd)
