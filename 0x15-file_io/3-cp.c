@@ -21,9 +21,14 @@ int main(int argc, char *argv[])
 	}
 
 	fdFrom = open(argv[1], O_RDONLY);
-	testRead = read(fdFrom, buf, 1024);
+	if (fdFrom == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 
-	if (fdFrom == -1 || testRead == -1)
+	testRead = read(fdFrom, buf, 1024);
+	if (testRead == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
