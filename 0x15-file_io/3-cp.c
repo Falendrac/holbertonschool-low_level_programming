@@ -11,101 +11,78 @@
  */
 int main(int argc, char *argv[])
 {
-	int fdFrom, testClose, testRead, testCreate;
+	int fdFrom, fdTo, testClose, testRead, testWrite;
 	char buf[1024];
 
 	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+		exit_procedure(97, NULL, 0);
 
 	fdFrom = open(argv[1], O_RDONLY);
 	if (fdFrom == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+		exit_procedure(98, argv, 0);
 
-	testRead = read(fdFrom, buf, 1024);
-	if (testRead == -1)
+	fdTo = open(argv[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
+	if(fdTo == -1)
+		exit_procedure(99, argv, 0);
+
+	while ((testRead = read(fdFrom, buf, 1024)) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+		if (testRead == -1)
+			exit_procedure(98, argv, 0);
+		else
+		{
+			testWrite = write(fdTo, buf, testRead);
+
+			if (testWrite == -1)
+				exit_procedure(99, argv,fdTo);
+		}
 	}
 
 	testClose = close(fdFrom);
-
 	if (testClose == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdFrom);
-		exit(100);
-	}
+		exit_procedure(100, NULL, fdFrom);
 
-	testCreate = create_file(argv[2], buf);
-
-	if (testCreate == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	testClose = close(fdTo);
+	if (testClose == -1)
+		exit_procedure(100, NULL, fdTo);
 
 	return (0);
 }
 
 /**
- * _strlen - Return the length of a string
+ * exit_procedure - If the code fail the procedure due of the faillure
+ * is print and exit with the exit code
  *
- * @s: The String we want to know the length
- *
- * Return: length
+ * @exitCode: The Number of the exit code
+ * @fd: The file of the faillure
  */
-int _strlen(char *s)
+void exit_procedure(int exitCode, char *argv[], int fd)
 {
-	int length = 0;
-
-	while (*s != '\0')
+	switch (exitCode)
 	{
-		s++;
-		length++;
+	case 97:
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+		break;
+
+	case 98:
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+		break;
+
+	case 99:
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+		break;
+
+	case 100:
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+		break;
+
+	default:
+		break;
 	}
 
-	return (length);
-}
 
-/**
- * create_file - Create a file
- *
- * @filename: The name of the file to create
- * @text_content: The content of the file
- *
- * Return: 1 on sucess, -1 on failure
- * Failure when filename is NULL
- */
-int create_file(const char *filename, char *text_content)
-{
-	int fd, testWrite;
-
-	if (filename == NULL)
-		return (-1);
-
-	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0664);
-
-	if (fd == -1)
-		return (-1);
-
-	if (text_content != NULL)
-	{
-		testWrite = write(fd, text_content, _strlen(text_content));
-
-		if (testWrite == -1)
-		{
-			close(fd);
-			return (-1);
-		}
-	}
-
-	close(fd);
-
-	return (1);
 }
