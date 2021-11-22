@@ -15,13 +15,13 @@ int main(int argc, char *argv[])
 	char buf[1024];
 
 	if (argc != 3)
-		exit_procedure(97, NULL, 0);
+		exit_procedure(97, argv, 0);
 
 	fdFrom = open(argv[1], O_RDONLY);
 	if (fdFrom == -1)
 		exit_procedure(98, argv, 0);
 
-	fdTo = open(argv[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
+	fdTo = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fdTo == -1)
 		exit_procedure(99, argv, 0);
 
@@ -29,22 +29,21 @@ int main(int argc, char *argv[])
 	{
 		if (testRead == -1)
 			exit_procedure(98, argv, 0);
-		else
-		{
-			testWrite = write(fdTo, buf, testRead);
 
-			if (testWrite == -1)
-				exit_procedure(99, argv, fdTo);
-		}
+		testWrite = write(fdTo, buf, testRead);
+
+		if (testWrite == -1)
+			exit_procedure(99, argv, fdTo);
+
 	}
 
 	testClose = close(fdFrom);
 	if (testClose == -1)
-		exit_procedure(100, NULL, fdFrom);
+		exit_procedure(100, argv, fdFrom);
 
 	testClose = close(fdTo);
 	if (testClose == -1)
-		exit_procedure(100, NULL, fdTo);
+		exit_procedure(100, argv, fdTo);
 
 	return (0);
 }
