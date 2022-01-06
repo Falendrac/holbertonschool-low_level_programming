@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * delete_dnodeint_at_index - Delete at the index in the dlistint list.
@@ -35,13 +36,13 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		}
 		else if (idx == index)
 		{
-			current->prev->next = current->next;
-			current->next->prev = current->prev;
-			free(current);
-		}
-		else if ((idx + 1) == index)
-		{
-			current->prev->next = NULL;
+			if (current->next != NULL)
+			{
+				current->prev->next = current->next;
+				current->next->prev = current->prev;
+			}
+			else
+				current->prev->next = NULL;
 			free(current);
 		}
 		else
