@@ -6,7 +6,7 @@
  * @head: The first node of a dlistint_t list.
  * @index: The index of the node that need to return
  *
- * @return dlistint_t*
+ * Return: The node at the index or NULL if no node
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
