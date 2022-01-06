@@ -40,36 +40,35 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (h == NULL)
 		return (NULL);
 
+	if (idx == 0)
+		return (add_dnodeint(h, n));
+
 	new = create_node(n);
 	if (new == NULL)
 		return (NULL);
 
-	if (*h == NULL)
-		*h = new;
-	else
+	current = *h;
+	while (current->next != NULL && current_idx != idx)
 	{
-		current = *h;
-		while (current->next != NULL && current_idx != idx)
-		{
-			current = current->next;
-			current_idx++;
-		}
-		if (idx == 0)
-			return (add_dnodeint(h, n));
-		else if (current_idx == idx)
-		{
-			new->prev = current->prev;
-			new->next = current;
-			current->prev->next = new;
-			current->prev = new;
-		}
-		else if ((current_idx + 1) == idx)
-		{
-			current->next = new;
-			new->prev = current;
-		}
-		else
-			free(new);
+		current = current->next;
+		current_idx++;
 	}
+
+	if (current_idx == idx)
+	{
+		new->prev = current->prev;
+		new->next = current;
+		current->prev->next = new;
+		current->prev = new;
+	}
+	else if ((current_idx + 1) == idx)
+	{
+		current->next = new;
+		new->prev = current;
+	}
+	else
+		free(new);
+
+
 	return (new);
 }
