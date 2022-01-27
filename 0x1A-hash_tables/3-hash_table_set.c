@@ -25,9 +25,19 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new = malloc(sizeof(hash_node_t));
 	if (new == NULL)
 		return (HASH_SET_FAIL);
-
 	new->key = strdup(key);
+	if (new->key == NULL)
+	{
+		free(new);
+		return (HASH_SET_FAIL);
+	}
 	new->value = strdup(value);
+	if (new->value == NULL)
+	{
+		free(new->key);
+		free(new);
+		return (HASH_SET_FAIL);
+	}
 	new->next = NULL;
 
 	if (array[index] != NULL)
