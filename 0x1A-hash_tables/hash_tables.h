@@ -1,6 +1,13 @@
 #ifndef HASH_TABLES_H
 #define HASH_TABLES_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define HASH_SET_FAIL 0
+#define HASH_SET_SUCCESS 1
+
 /**
  * struct hash_node_s - Node of a hash table
  *
