@@ -12,26 +12,22 @@
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long int index;
-	hash_node_t **array;
 	hash_node_t *current;
 
-	array = ht->array;
+	if (!ht || !key)
+		return (NULL);
+
 	index = key_index((unsigned char *)key, ht->size);
+	current = ht->array[index];
 
-	if (array[index] && strcmp(array[index]->key, key) == 0)
-		return (array[index]->value);
-
-	if (array[index] && array[index]->next)
+	while (current != NULL)
 	{
-		current = array[index];
-		while (current != NULL)
-		{
-			if (strcmp(current->key, key) == 0)
-				return (current->value);
+		if (strcmp(current->key, key) == 0)
+			return (current->value);
 
-			current = current->next;
-		}
+		current = current->next;
 	}
+
 
 	return (NULL);
 }
