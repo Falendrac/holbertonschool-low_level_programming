@@ -47,10 +47,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	hash_node_t **array = ht->array;
-	hash_node_t *new, *current;
+	hash_node_t *new = NULL, *current;
 
 	/* Test if ht, array and key is null */
-	if (!ht || !ht->array || !key)
+	if (!ht || !ht->array || !key || strcmp(key, "") == 0 || !value)
 		return (HASH_SET_FAIL);
 
 	index = key_index((unsigned char *)key, ht->size);
@@ -72,11 +72,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (new == NULL)
 		return (HASH_SET_FAIL);
 
-	if (array[index] != NULL)
-	{
-		new->next = array[index];
-		array[index] = new;
-	}
+	new->next = array[index];
 	array[index] = new;
 
 	return (HASH_SET_SUCCESS);
