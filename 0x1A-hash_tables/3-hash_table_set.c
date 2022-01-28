@@ -69,6 +69,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 
 	new = new_node(key, value);
+	if (new == NULL)
+		return (HASH_SET_FAIL);
 
 	if (array[index] != NULL)
 	{
