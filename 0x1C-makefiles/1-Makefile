@@ -1,6 +1,12 @@
+# Variable CC set to use the compiler we want
+
 CC = gcc
 
+# Variable SRC set to target the files we want to compile
+
 SRC = $(wildcard main.c school.c)
+
+# All rule taking CC and SRC variables to create the executable school file.
 
 all: ${SRC}
 	${CC} ${SRC} -o school

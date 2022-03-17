@@ -1,10 +1,20 @@
+# Variable CC set to use the compiler we want
+
 CC = gcc
+
+# Variable SRC set to target the files we want to compile
 
 SRC = $(wildcard main.c school.c)
 
+# Variable OBJ set to target the object files with the base SRC.
+
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
+# Name of the executable file.
+
 NAME = school
+
+# All rule taking CC and SRC variables to create the executable NAME file.
 
 all: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}

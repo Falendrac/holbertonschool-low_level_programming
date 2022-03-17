@@ -1,22 +1,42 @@
+# Variable CC set to use the compiler we want
+
 CC = gcc
+
+# Variable SRC set to target the files we want to compile
 
 SRC = $(wildcard main.c school.c)
 
+# Variable OBJ set to target the object files with the base SRC.
+
 OBJ = $(patsubst %.c, %.o, $(SRC))
+
+# Name of the executable file.
 
 NAME = school
 
+# Variable RM set the rule for rm function
+
 RM = rm -f
+
+# All rule taking CC and SRC variables to create the executable NAME file.
 
 all: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
+# clean rule deleting temporary files and the executable files.
+
 clean:
 	${RM} *~ ${NAME}
+
+# oclean rule deleting object files.
 
 oclean:
 	${RM} ${OBJ}
 
+# fclean rule executing clean and oclean rules.
+
 fclean: clean oclean
+
+# re rule executing oclean and all rule to force recompiling.
 
 re: oclean all
