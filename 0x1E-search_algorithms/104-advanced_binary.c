@@ -24,6 +24,8 @@ int binary_search_recursion(int *array, size_t min, size_t max, int value)
 		else
 			printf("\n");
 	}
+	if (min > max)
+		return (-1);
 
 	if (min == max)
 	{
