@@ -48,8 +48,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		printf("Value checked at index [%ld] = [%d]\n", tmp->index, tmp->n);
 	}
 
-	printf("Value found between indexes [%ld] and [%ld]\n", prev - step, tmp->index);
 	prev -= step;
+	printf("Value found between indexes [%ld] and [%ld]\n", prev, tmp->index);
 
 	tmp = search_node_at_index(list, prev);
 
